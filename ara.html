@@ -2593,6 +2593,23 @@
 
 
         }
+
+        .dark-mode .menu-icon {
+    color: whitesmoke;
+}
+
+.minor {
+        display: none;
+        height: 250px;
+        width: 100%;
+       }
+
+       /* Consulta de mídia para telas menores */
+@media (max-width: 768px) {
+    .minor {
+        display: block; /* Ou qualquer outra propriedade de exibição que desejar */
+    }
+}
     </style>
 </head>
 
@@ -2709,14 +2726,14 @@
                 <a href="ara.html" data-abbr="ara"
                     onclick="selectOption('Bíblia ARA (Almeida Revista e Atualizada)', 'ara')">Bíblia ARA (Almeida
                     Revista e Atualizada)</a>
-                <a href="kjv.html" data-abbr="kjv" onclick="selectOption('Bíblia KJV (King James Version)', 'kjv')">Bíblia KJV
+                <a href="english.html" data-abbr="kjv" onclick="selectOption('Bíblia KJV (King James Version)', 'kjv')">Bíblia KJV
                     (King James Version)</a>
-                <a href="bbe.html" data-abbr="bbe" onclick="selectOption('Bíblia BBE (Bible in Basic English)', 'bbe')">Bíblia
+                <a href="english2.html" data-abbr="bbe" onclick="selectOption('Bíblia BBE (Bible in Basic English)', 'bbe')">Bíblia
                     BBE (Bible in Basic English)</a>
-                <a href="apee.html" data-abbr="apee"
+                <a href="french.html" data-abbr="apee"
                     onclick="selectOption('Bíblia APEE (Almeida Recebida, Textus Receptus)', 'apee')">Bíblia APEE
                     (Almeida Recebida, Textus Receptus)</a>
-                <a href="rvr.html" data-abbr="rvr" onclick="selectOption('Bíblia RVR (Reina-Valera 1960)', 'rvr')">Bíblia RVR
+                <a href="spanish.html" data-abbr="rvr" onclick="selectOption('Bíblia RVR (Reina-Valera 1960)', 'rvr')">Bíblia RVR
                     (Reina-Valera 1960)</a>
             </div>
 
@@ -2740,7 +2757,7 @@
     <!-- Bíblia  -->
 
     <h1 id="title"></h1>
-
+    <div class="minor"></div>
 
 
     <!-- Botões de livro  -->
@@ -3213,7 +3230,7 @@
                     // Adiciona o título "Antigo Testamento" na primeira linha
                     const oldTestamentTitleRow = document.createElement('tr');
                     const oldTestamentTitleCell = document.createElement('td');
-                    oldTestamentTitleCell.setAttribute('colspan', '4'); // Define a largura da célula para cobrir todas as colunas
+                    oldTestamentTitleCell.setAttribute('colspan', '3'); // Define a largura da célula para cobrir todas as colunas
                     oldTestamentTitleCell.style.textAlign = 'center'; // Centraliza o texto
                     oldTestamentTitleCell.style.fontWeight = 'bold'; // Define o texto em negrito
                     oldTestamentTitleCell.style.fontSize = 'x-large'; // Aumenta o tamanho da fonte
@@ -3229,7 +3246,7 @@
                         // Adiciona título do grupo
                         const groupTitleRow = document.createElement('tr');
                         const groupTitleCell = document.createElement('td');
-                        groupTitleCell.setAttribute('colspan', '4'); // Define a largura da célula para cobrir todas as colunas
+                        groupTitleCell.setAttribute('colspan', '3'); // Define a largura da célula para cobrir todas as colunas
                         groupTitleCell.style.textAlign = 'left'; // Alinha o texto à esquerda
                         groupTitleCell.style.fontWeight = 'bold'; // Define o texto em negrito
                         groupTitleCell.style.padding = '10px'; // Adiciona espaço em volta
@@ -3242,7 +3259,7 @@
 
                         groupBooks.forEach((book, index) => {
                             // Cria uma nova linha a cada 4 botões do mesmo grupo
-                            if (index % 4 === 0) {
+                            if (index % 3 === 0) {
                                 currentRow = document.createElement('tr');
                                 table.appendChild(currentRow);
                             }
@@ -3270,7 +3287,7 @@
                         if (group === "Profetas menores") {
                             const newTestamentTitleRow = document.createElement('tr');
                             const newTestamentTitleCell = document.createElement('td');
-                            newTestamentTitleCell.setAttribute('colspan', '4'); // Define a largura da célula para cobrir todas as colunas
+                            newTestamentTitleCell.setAttribute('colspan', '3'); // Define a largura da célula para cobrir todas as colunas
                             newTestamentTitleCell.style.textAlign = 'center'; // Centraliza o texto
                             newTestamentTitleCell.style.fontWeight = 'bold'; // Define o texto em negrito
                             newTestamentTitleCell.style.fontSize = 'x-large'; // Aumenta o tamanho da fonte
@@ -3283,8 +3300,8 @@
                         }
 
                         // Se o número de botões não for múltiplo de 4, adicione uma célula vazia para preencher a linha
-                        if (groupBooks.length % 4 !== 0) {
-                            const remainingCells = 4 - (groupBooks.length % 4);
+                        if (groupBooks.length % 3 !== 0) {
+                            const remainingCells = 3 - (groupBooks.length % 3);
                             for (let i = 0; i < remainingCells; i++) {
                                 const emptyCell = document.createElement('td');
                                 currentRow.appendChild(emptyCell);
