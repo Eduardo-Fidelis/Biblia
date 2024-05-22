@@ -1,0 +1,3054 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bíblia - Livro Sagrado</title>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('pwabuilder-sw.js')
+    }
+</script>
+  <meta name="description" content="Gemini is built from the ground up for multimodality — reasoning seamlessly across image, video, audio, and code.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="referrer" content="no-referrer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deepmind.google/technologies/gemini/">
+  <meta property="og:title" content="Gemini - Google DeepMind">
+  <meta property="og:description" content="Gemini is built from the ground up for multimodality — reasoning seamlessly across image, video, audio, and code.">
+  <meta property="og:image" content="../../deepmind.google/technologies/gemini/static/images/share.png">
+  <meta property="og:locale" content="en">
+  <meta property="twitter:site" content="@googledeepmind">
+  <meta property="twitter:title" content="Gemini - Google DeepMind">
+  <meta property="twitter:description" content="Gemini is built from the ground up for multimodality — reasoning seamlessly across image, video, audio, and code.">
+  <meta property="twitter:image" content="https://deepmind.google/technologies/gemini/static/images/share.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <!-- <link href="https://deepmind.google/technologies/gemini/" rel="canonical">
+  <link href="https://deepmind.google/technologies/gemini/" hreflang="x-default" rel="alternate"> -->
+  <!-- <link rel="icon" href="../../deepmind.google/technologies/gemini/static/icons/google_deepmind_32dp.c67bb05568f4_fingerprint%3Da5617cb5b373c162d23a9f77dda988cb.ico"> -->
+  <script src="https://www.youtube.com/iframe_api" async=""></script><script src="../../deepmind.google/technologies/gemini/static/chunks/main_fingerprint%3Dc1aba2226e7d82153b12d820f7240ce3.js" type="module"></script>
+  <link rel="apple-touch-icon" href="../../www.gstatic.com/images/branding/productlogos/google_deepmind/v3/web-96dp/logo_google_deepmind_color_2x_web_96dp.png">
+  <link rel="icon" href="2.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Product+Sans&amp;family=Google+Sans+Display:ital@0;1&amp;family=Google+Sans_old:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans&amp;family=Google+Sans+Display:ital@0;1&amp;family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Material+Symbols+Outlined&amp;family=Space+Mono&amp;display=swap">
+  <link href="../../www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css" rel="stylesheet" as="style">
+  <link href="../../deepmind.google/technologies/gemini/static/files/base.min.1f6259a65d9b.css" rel="stylesheet" as="style">
+  <link href="../../deepmind.google/technologies/gemini/static/css/main.css" rel="stylesheet" as="style">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            background-color: #F9F9F9;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        #noteInput, .note {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        #noteTitle, #noteText {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        #noteTitle {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #noteText {
+            height: 200px;
+        }
+        .note h2 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .note button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .note .view {
+            background-color: #007BFF;
+        }
+        .note .delete {
+            background-color: #DC3545;
+        }
+        .note .edit {
+            background-color: #989e20;
+        }
+
+        .btn {
+            font-size: 18px;
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            color: #fff;
+            background-color: #28A745;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            white-space: nowrap;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        .btn:hover {
+            background-color: #185a27;
+            transform: scale(1.05);
+        }
+
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .book-button {
+            font-size: 16px;
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            color: #fff;
+            background-color: #e50914;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.5;
+        }
+
+        .book-button:hover {
+            background-color: #b20710;
+            transform: scale(1.05);
+        }
+
+        .book-name {
+            font-size: 14px;
+        }
+
+        .book-abbrev {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #content-container {
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            text-align: center;
+            display: none;
+            margin-top: 130px;
+        }
+
+        .verse {
+            font-size: 16px;
+            margin: 5px;
+            padding: 5px;
+            border: none;
+            color: #000;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .verse-number {
+            font-weight: bold;
+        }
+
+        #read-button {
+            display: none;
+            position: fixed;
+            top: 30px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 9%;
+        }
+
+        #back-to-chapters-button {
+            display: none;
+            position: fixed;
+            top: 30px;
+            left: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 9%;
+        }
+
+        #back-to-books-button {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10%;
+        }
+
+        /* Estilos para centralizar os títulos */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            /* Adiciona um espaço superior para estilização */
+        }
+
+        .book-abbrev,
+        .book-name,
+        #title {
+            text-align: center;
+        }
+
+        #verse-options-menu {
+            position: fixed;
+            bottom: 20px;
+            /* Adiciona espaço entre a parte inferior da tela e o menu */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            background-color: #444;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #verse-options-menu button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            /* Cor do texto branco */
+        }
+
+        #verse-options-menu button:hover {
+            opacity: 0.8;
+            /* Reduz a opacidade ao passar o mouse */
+        }
+
+        #copy-verse-btn {
+            background-color: #007bff;
+            /* Cor de fundo azul do Bootstrap */
+        }
+
+        #share-verse-btn {
+            background-color: #28a745;
+            /* Cor de fundo verde do Bootstrap */
+        }
+
+
+
+        .verse {
+            transition: transform 0.3s ease;
+        }
+
+        .verse:hover {
+            transform: scale(0.95);
+        }
+
+        .verse.marked {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        /* Estilos para o botão "Marcar" */
+        #mark-verse-btn {
+            background-color: yellow !important;
+            color: black !important;
+        }
+
+        /* Estilos para o ícone do botão "Marcar" */
+        #mark-verse-btn i {
+            color: black !important;
+        }
+
+        /* Estilo para o verso marcado */
+        .verse.marked {
+            background-color: #ffffcc;
+            /* Amarelo claro */
+        }
+
+        /* Estilo para tornar o texto em negrito */
+        .verse.marked span.verse-number,
+        .verse.marked span.verse-text {
+            font-weight: bold;
+        }
+
+        /* Estilos para versículos marcados */
+        .verse.marked {
+            background-color: yellow;
+            /* Fundo amarelo para versículos marcados */
+            font-weight: bold;
+            /* Texto em negrito para versículos marcados */
+        }
+
+
+
+
+        /* Estilização do efeito de hover nas laterais */
+        .verse-page .hover-effect::before,
+        .verse-page .hover-effect::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            width: 5%;
+            height: 100%;
+            background-color: rgba(211, 211, 211, 0.5);
+            /* Cinza claro com 50% de transparência */
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .verse-page .hover-effect::before {
+            left: 0;
+        }
+
+        .verse-page .hover-effect::after {
+            right: 0;
+        }
+
+        /* Quando o mouse passa nas laterais */
+        .verse-page:hover .hover-effect::before,
+        .verse-page:hover .hover-effect::after {
+            opacity: 1;
+        }
+
+        /* Estilos adicionais para ajustar a sobreposição */
+        .verse-container {
+            position: relative;
+            z-index: 2;
+            /* Colocar o conteúdo acima dos pseudo-elementos */
+        }
+
+        /* Estilos para a linha horizontal */
+        .line {
+            width: calc(100% - 20px);
+            /* Calcula o tamanho da linha */
+            height: 1px;
+            /* Espessura da linha */
+            background-color: #000;
+            /* Cor da linha */
+            margin-left: auto;
+            /* Alinha à direita */
+            margin-right: auto;
+            /* Alinha à esquerda */
+        }
+
+        /* Estilos para a caixa transparente */
+        .transparent-box {
+            width: 100%;
+            height: 1px;
+            /* Espessura da linha */
+            background-color: transparent;
+        }
+
+        /* Estilos para a página */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            /* Cor de fundo */
+            font-family: Arial, sans-serif;
+            color: #333;
+            /* Cor do texto */
+        }
+
+        /* Estilos para os títulos */
+        h3 {
+            color: #333;
+            /* Cor do texto */
+        }
+
+        h4 {
+            color: #333;
+            /* Cor do texto */
+        }
+
+        /* Estilos para a lista de botões */
+        .book-list {
+            list-style: none;
+            /* Remover marcadores de lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .book-title {
+            font-weight: bold;
+        }
+
+        .book-button {
+            display: block;
+            /* Exibir botões em bloco */
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 8px;
+            /* Adicionar espaçamento interno aos botões */
+            border-radius: 5px;
+            font-size: 14px;
+            width: 120px;
+            /* Definir largura fixa para os botões */
+            height: 120px;
+            /* Definir altura fixa para os botões */
+            text-align: left;
+            /* Alinhar texto à esquerda */
+            line-height: 1.5;
+            /* Altura da linha para centralizar verticalmente */
+        }
+
+        /* Estilização específica para a primeira linha de texto dentro do botão */
+        .book-button .first-line {
+            font-size: 18px;
+            /* Ajustar o tamanho da primeira linha de texto */
+            font-weight: bold;
+            /* Deixar o primeiro texto em negrito */
+        }
+
+        /* Estilização específica para a segunda linha de texto dentro do botão (abreviação) */
+        .book-button .second-line {
+            font-size: 14px;
+            /* Ajustar o tamanho da segunda linha de texto */
+        }
+
+        /* Estilos adicionais para responsividade */
+        @media screen and (max-width: 768px) {
+            .book-button {
+                font-size: 12px;
+                /* Reduzir o tamanho do texto para dispositivos menores */
+                width: 40%;
+                /* Largura de 40% com margem entre os botões */
+                height: auto;
+                /* Altura automática para ajustar ao conteúdo */
+                margin: 5px;
+                /* Margem entre os botões */
+            }
+
+            /* Ajustar tamanho do texto para dispositivos menores */
+            .book-button .first-line {
+                font-size: 14px;
+                /* Ajustar o tamanho da primeira linha de texto */
+            }
+
+            .book-button .second-line {
+                font-size: 11px;
+                /* Ajustar o tamanho da segunda linha de texto */
+            }
+        }
+
+
+        /* Estilos para telas pequenas */
+        @media (max-width: 767px) {
+            .book-table .book-button {
+                /* Estilos para telas menores ou iguais a 767px de largura */
+                width: 100%;
+                /* Defina o tamanho dos botões para ocupar 48% da largura do contêiner */
+                margin-bottom: 10px;
+                /* Espaçamento inferior para separação entre linhas */
+                margin: 5px;
+            }
+        }
+
+        #navigation-buttons {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .navigation-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .navigation-button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Título  */
+        #title {
+            /*background-color: white; /* Fundo branco */
+
+            /* padding: 10px 20px; */
+            /* Espaçamento interno */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            text-align: center;
+            /* Centralizar texto */
+            /*background: linear-gradient(to right, #0c00f5, #ff00ee); /* Degradê entre azul escuro e cinza para o texto */
+            /*-webkit-background-clip: text; /* Clipar o degradê para o texto */
+            /*-webkit-text-fill-color: transparent; /* Faz com que o texto adote a cor do degradê */
+            font-family: 'Roboto', sans-serif;
+            /* Fonte Sacramento */
+            color: black;
+            /* Cor preta */
+            margin-top: 45px;
+        }
+
+        /* Menuzinho  */
+        .menu-container {
+            position: fixed;
+            /* Posição fixa na tela */
+            top: 20%;
+            right: 20px;
+            /* Distância do canto direito */
+        }
+
+        .question-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: #800080;
+            /* Fundo roxo */
+            color: #fff;
+            /* Texto branco */
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            right: 50px;
+            /* Posicionamento à esquerda do botão de ponto de interrogação */
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .dropdown-content button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .menu-container:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Máscara de leitura  */
+        .reading-highlight {
+            background-color: yellow;
+            /* Cor de destaque */
+        }
+
+        .reading-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Cor de fundo semi-transparente */
+            z-index: 9999;
+            /* Garante que a máscara de leitura fique acima de todo o conteúdo */
+        }
+
+        .orange-line {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            width: 20%;
+            height: 2px;
+            background-color: orange;
+            cursor: grab;
+            z-index: 9999;
+            display: none;
+        }
+
+        /* ...............................................................................................................................................  */
+
+        .dark-mode body {
+            background-color: #333;
+            /* Cor de fundo para o dark mode */
+        }
+
+        header {
+            position: fixed;
+            /* Torna o menu fixo na parte superior */
+            top: 0;
+            /* Posiciona o menu no topo da página */
+            width: 70%;
+            /* Reduz a largura do menu */
+            z-index: 1000;
+            /* Garante que o menu esteja acima de outros elementos */
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Centraliza os elementos e deixa o logo e o botão darkmode nas extremidades */
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode header {
+            background-color: #222;
+            /* Cor de fundo para o dark mode */
+        }
+
+        .logo img {
+            width: 80px;
+            /* Aumenta o tamanho da logo */
+            height: 80px;
+            /* Aumenta o tamanho da logo */
+            transition: filter 0.3s ease;
+        }
+
+        .dark-mode .logo img {
+            filter: brightness(0.8);
+            /* Reduz o brilho da logo no dark mode */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: royalblue;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode nav ul li a {
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+        }
+
+        nav ul li a:hover {
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            /* Faz o menu dropdown aparecer abaixo do texto */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222;
+            /* Cinza escuro para o dark mode */
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+            /* Garante que o menu dropdown apareça sobre outros elementos */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            /* Mostra o menu dropdown quando passa o mouse sobre o texto */
+        }
+
+        .dropdown-content span {
+            display: block;
+            margin-bottom: 5px;
+            /* Adiciona um espaço entre as opções do dropdown */
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .dropdown-content span {
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+        }
+
+        .dropdown-content span:hover {
+            text-decoration: underline;
+            /* Sublinhado ao passar o mouse */
+        }
+
+        .mode-toggle {
+            margin-right: 30px;
+            /* Espaçamento entre o menu dropdown e o botão dark mode */
+        }
+
+        .mode-toggle button {
+            background-color: #2c3e50;
+            /* Azul escuro para o dark mode */
+            color: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            /* Aumenta o arredondamento do botão */
+            padding: 15px 30px;
+            /* Aumenta o tamanho do botão */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode .mode-toggle button {
+            background-color: #6a0dad;
+            /* Roxo escuro para o dark mode */
+        }
+
+        .mode-toggle button:hover {
+            background-color: #34495e;
+            /* Tom de azul mais escuro para o hover */
+        }
+
+        .dark-mode .mode-toggle button:hover {
+            background-color: #4c0783;
+            /* Tom de roxo mais escuro para o hover */
+        }
+
+        /* Animations */
+        @keyframes darkModeAnimation {
+            from {
+                filter: brightness(1);
+            }
+
+            to {
+                filter: brightness(0.5);
+            }
+        }
+
+        header {
+            position: fixed;
+            /* Mantém o menu fixo na parte superior */
+            top: 20px;
+            /* Adiciona espaço entre o topo da tela e o menu */
+            left: 50%;
+            /* Centraliza o menu horizontalmente */
+            transform: translateX(-50%);
+            /* Ajusta o ponto central do menu */
+            width: 70%;
+            /* Mantém a largura do menu */
+            z-index: 1000;
+            /* Garante que o menu fique acima de outros elementos */
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            /* Reduz o preenchimento para diminuir a altura */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Distribui o espaço entre os elementos dentro do menu */
+            transition: background-color 0.3s ease;
+        }
+
+        .logo img {
+            width: 60px;
+            /* Diminui o tamanho da logo */
+            height: 60px;
+            /* Diminui o tamanho da logo */
+            transition: filter 0.3s ease;
+        }
+
+        /* Mantenha o resto do CSS como está */
+
+        .dark-mode-text,
+        .dark-mode-header,
+        .dropdown-content span {
+            color: #FFFFFF;
+            /* Define o texto para branco */
+        }
+
+        nav a,
+        nav span,
+        .dropbtn,
+        .dropdown-content span {
+            font-weight: bold;
+        }
+
+        .mode-toggle button {
+            font-weight: bold;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: royalblue;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            position: relative;
+            /* Necessário para o posicionamento absoluto de ::before e ::after */
+            padding: 10px 0;
+            /* Aumenta o espaçamento vertical */
+        }
+
+        nav ul li a::before,
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            /* Aumenta a espessura da linha */
+            background-color: royalblue;
+            /* Cor da linha */
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            /* Começa sem visibilidade */
+        }
+
+        nav ul li a::before {
+            top: -5px;
+            /* Mantém a posição acima do texto */
+        }
+
+        nav ul li a::after {
+            bottom: -5px;
+            /* Mantém a posição abaixo do texto */
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            /* Expande a linha ao passar o mouse */
+        }
+
+        /* Estilos para o modo dark */
+        .dark-mode nav ul li a::before,
+        .dark-mode nav ul li a::after {
+            background-color: #ddd;
+            /* Cor da linha para o modo dark */
+        }
+
+        nav {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav a {
+            font-weight: 700;
+            /* Aplica o peso negrito */
+        }
+
+        .full-width-div {
+            height: 140px;
+            /* Altura ajustada para 150px */
+            width: 100%;
+            background-color: inherit;
+            /* Herda a cor de fundo do body */
+            z-index: 9999999;
+        }
+
+
+
+        /* Leia já  */
+
+        .read-now button {
+            background-color: royalblue;
+            /* Fundo azul royal */
+            color: white;
+            /* Texto em branco */
+            font-weight: bold;
+            /* Texto em negrito */
+            padding: 10px 20px;
+            /* Espaçamento interno */
+            border: 2px solid transparent;
+            /* Borda transparente inicial */
+            border-radius: 5px;
+            /* Borda arredondada */
+            cursor: pointer;
+            /* Muda o cursor para indicar clicabilidade */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Transição suave para hover */
+        }
+
+        .read-now button:hover {
+            background-color: white;
+            /* Fundo fica branco */
+            color: royalblue;
+            /* Texto fica azul royal */
+            border-color: royalblue;
+            /* Borda azul royal */
+        }
+
+
+
+        .read-now a {
+            text-decoration: none;
+            /* Remove sublinhado dos links */
+        }
+
+        .read-now a:visited,
+        .read-now a:link {
+            color: inherit;
+            /* Mantém a cor herdada, sem alteração pelo link */
+        }
+
+        .box {
+            margin-top: 10%;
+        }
+
+        /* ................................................................................  */
+        /* Acessibilidade  */
+        .accessibility-button {
+            background-color: #007BFF;
+            /* Azul Bootstrap */
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+            /* Borda arredondada */
+            cursor: pointer;
+            /* Muda o cursor para indicar clicabilidade */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Transição suave para hover */
+        }
+
+        .accessibility-button {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        .accessibility-button:hover {
+            background-color: #007bff;
+        }
+
+        .accessibility-tools button {
+            background-color: #6c757d;
+            width: 48%;
+            margin-top: 5px;
+        }
+
+        .accessibility-tools button {
+            background-color: royalblue;
+            /* Fundo azul royal */
+            color: white;
+            /* Texto em branco */
+            font-weight: bold;
+            /* Texto em negrito */
+            padding: 10px 20px;
+            /* Espaçamento interno */
+            border: 2px solid transparent;
+            /* Borda transparente inicial */
+            border-radius: 5px;
+            /* Borda arredondada */
+            cursor: pointer;
+            /* Muda o cursor para indicar clicabilidade */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Transição suave para hover */
+        }
+
+        .accessibility-tools button:hover {
+            background-color: white;
+            /* Fundo fica branco */
+            color: royalblue;
+            /* Texto fica azul royal */
+            border-color: royalblue;
+            /* Borda azul royal */
+        }
+
+
+
+        .accessibility-tools a {
+            text-decoration: none;
+            /* Remove sublinhado dos links */
+        }
+
+        .accessibility-tools a:visited,
+        .accessibility-tools a:link {
+            color: inherit;
+            /* Mantém a cor herdada, sem alteração pelo link */
+        }
+
+        .accessibility-tools {
+            display: none;
+        }
+
+        .unique-container {
+            width: 100%;
+            padding-top: 20px;
+            /* Espaço no topo */
+            display: flex;
+            justify-content: center;
+            /* Centraliza horizontalmente */
+        }
+
+        .unique-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .unique-dropbtn {
+            background-color: #f5f5f5;
+            /* Cor de fundo da página */
+            color: black;
+            padding: 20px 50px;
+            /* Padding aumentado para botão maior */
+            font-size: 32px;
+            /* Tamanho do texto igual a um h1 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            /* Fonte em negrito */
+        }
+
+        .unique-dropbtn:hover {
+            background-color: #e0e0e0;
+            /* Fundo mais escuro ao passar o mouse */
+        }
+
+        .unique-arrow-down {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid black;
+            /* Seta preta */
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        .unique-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            top: calc(100% + 5px);
+            /* Ajustado para evitar sobreposição direta */
+            left: 0;
+            right: 0;
+            margin: auto;
+            /* Centraliza automaticamente */
+        }
+
+        .unique-dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+        }
+
+        .unique-dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .unique-dropdown.show .unique-dropdown-content {
+            display: block;
+        }
+
+        .unique-dropdown.show .unique-arrow-down {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        /* Adicionando regra de mídia para telas menores */
+        @media (max-width: 600px) {
+            .unique-dropbtn {
+                font-size: 18px;
+                /* Tamanho de fonte menor em telas pequenas */
+            }
+        }
+
+        #readingLine {
+            width: calc(100%);
+            height: 5px;
+            background-color: orange;
+            border: 1px solid black;
+            position: absolute;
+            display: none;
+            z-index: 9999;
+        }
+
+        /* Configurações gerais de alto contraste */
+        .high-contrast {
+            background-color: black;
+            color: white;
+            border-color: white;
+        }
+
+        /* Estilos específicos para texto, links, e elementos interativos */
+        .high-contrast a,
+        .high-contrast a:visited,
+        .high-contrast a:hover {
+            color: yellow;
+            /* Links amarelos para destacar */
+        }
+
+        .high-contrast button,
+        .high-contrast input[type="button"],
+        .high-contrast input[type="submit"],
+        .high-contrast input[type="reset"],
+        .high-contrast select,
+        .high-contrast textarea,
+        .high-contrast input[type="text"],
+        .high-contrast input[type="email"] {
+            background-color: #333;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .high-contrast button:hover,
+        .high-contrast input[type="button"]:hover,
+        .high-contrast input[type="submit"]:hover,
+        .high-contrast input[type="reset"]:hover {
+            background-color: #555;
+            color: #FF0;
+        }
+
+        /* Títulos e cabeçalhos */
+        .high-contrast h1,
+        .high-contrast h2,
+        .high-contrast h3,
+        .high-contrast h4,
+        .high-contrast h5,
+        .high-contrast h6 {
+            color: cyan;
+        }
+
+        /* Parágrafos e outros elementos de texto */
+        .high-contrast p,
+        .high-contrast span,
+        .high-contrast div,
+        .high-contrast section,
+        .high-contrast article,
+        .high-contrast aside,
+        .high-contrast footer,
+        .high-contrast header,
+        .high-contrast nav,
+        .high-contrast main {
+            color: white;
+            background-color: black;
+        }
+
+        /* Listas */
+        .high-contrast ul,
+        .high-contrast ol,
+        .high-contrast li {
+            background-color: black;
+            color: white;
+        }
+
+        /* Tabelas */
+        .high-contrast table,
+        .high-contrast th,
+        .high-contrast td {
+            /* border: 1px solid white;  */
+            color: #ffff00;
+            background-color: black;
+        }
+
+        /* Imagens e vídeos */
+        .high-contrast img,
+        .high-contrast video {
+            filter: brightness(0.8) contrast(1.5);
+        }
+
+        /* Formulários e controles de entrada */
+        .high-contrast input,
+        .high-contrast textarea,
+        .high-contrast select,
+        .high-contrast label {
+            background-color: #222;
+            color: white;
+            border: 1px solid white;
+        }
+
+        /* Links e estados interativos */
+        .high-contrast a:hover,
+        .high-contrast button:hover,
+        .high-contrast input:hover,
+        .high-contrast textarea:hover,
+        .high-contrast select:hover {
+            background-color: #555;
+            color: yellow;
+        }
+
+        /* Barras de rolagem */
+        .high-contrast ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .high-contrast ::-webkit-scrollbar-track {
+            background: #333;
+        }
+
+        .high-contrast ::-webkit-scrollbar-thumb {
+            background: #ccc;
+        }
+
+        .high-contrast ::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+
+        /* Outras regras para garantir a visibilidade */
+        .high-contrast * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Aplicar alto contraste em todos os ícones e svg */
+        .high-contrast svg,
+        .high-contrast path,
+        .high-contrast use {
+            fill: white;
+            stroke: white;
+        }
+
+        /* Frames e iframes */
+        .high-contrast iframe,
+        .high-contrast frame {
+            filter: grayscale(100%) brightness(0.8) contrast(1.5);
+        }
+
+
+
+        /* anterior e próximo  */
+        #buttonContainer {
+            position: fixed;
+            bottom: 20px;
+            /* Define a distância do contêiner de botões ao fundo da janela */
+            left: 50%;
+            /* Centraliza horizontalmente */
+            transform: translateX(-50%);
+            /* Centraliza horizontalmente */
+            z-index: 999;
+            /* Garante que os botões estejam sempre acima de outros elementos */
+            display: none;
+        }
+
+
+        #previousButton,
+        #nextButton {
+            padding: 10px 18px;
+            /* Diminui o espaço interno dos botões */
+            font-size: 16px;
+            /* Diminui o tamanho do texto */
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            /* Adiciona uma transição suave à mudança de transformação e cor de fundo */
+            border-radius: 5px;
+            /* Bordas arredondadas */
+            font-weight: bold;
+            /* Texto em negrito */
+            z-index: 9999;
+        }
+
+        #nextButton {
+            margin-left: 10px;
+            /* Espaço entre os botões */
+        }
+
+        #previousButton:hover,
+        #nextButton:hover {
+            transform: scale(1.1);
+            /* Aumenta o tamanho do botão em 10% ao passar o mouse sobre ele */
+            background-color: #0008ff;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #verse-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            display: none;
+        }
+
+        .menu-option {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .menu-option:hover {
+            color: #007bff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        #verse-options-menu {
+            position: fixed;
+            bottom: 20px;
+            /* Adiciona espaço entre a parte inferior da tela e o menu */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            background-color: #444;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #verse-options-menu button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            /* Cor do texto branco */
+        }
+
+        #verse-options-menu button:hover {
+            opacity: 0.8;
+            /* Reduz a opacidade ao passar o mouse */
+        }
+
+        #copy-verse-btn {
+            background-color: #007bff;
+            /* Cor de fundo azul do Bootstrap */
+        }
+
+        #share-verse-btn {
+            background-color: #28a745;
+            /* Cor de fundo verde do Bootstrap */
+        }
+
+        /* Adicionando regra de mídia para telas menores */
+        @media (max-width: 600px) {
+            header {
+                padding: 10px;
+                /* Adicione um preenchimento menor */
+            }
+
+            .logo img {
+                max-width: 100px;
+                /* Reduza o tamanho do logotipo */
+            }
+
+            nav ul {
+                flex-direction: column;
+                /* Alinhe os itens verticalmente */
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+                /* Adicione margem entre os itens do menu */
+            }
+
+            .accessibility-button {
+                font-size: 14px;
+                /* Reduza o tamanho do botão de acessibilidade */
+            }
+
+            .accessibility-tools button {
+                font-size: 14px;
+                /* Reduza o tamanho dos botões de acessibilidade */
+            }
+
+            .mode-toggle button {
+                font-size: 14px;
+                /* Reduza o tamanho do botão de alternância de modo */
+            }
+        }
+
+        /* ..............................................................................................................................  */
+        /* Tradutor  */
+
+        #translate-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            z-index: 9999;
+        }
+
+        #translate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #translate-btn i {
+            font-size: 24px;
+            color: white;
+        }
+
+        #translate-menu {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
+        #translate-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #translate-menu li {
+            padding: 10px;
+            position: relative;
+        }
+
+        #translate-menu li a {
+            text-decoration: none;
+            color: #007bff;
+            /* Alterando a cor do texto para azul */
+            display: block;
+            position: relative;
+            line-height: 1.5;
+            /* Espaçamento maior entre as linhas e o texto */
+            font-weight: bold;
+            /* Deixando o texto em negrito */
+            font-family: Roboto, sans-serif;
+            /* Alterando a fonte para Roboto */
+        }
+
+        #translate-menu li a:hover::before,
+        #translate-menu li a:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            /* Aumentando a espessura da linha */
+            background-color: #007bff;
+        }
+
+        #translate-menu li a:hover::before {
+            top: 0;
+        }
+
+        #translate-menu li a:hover::after {
+            bottom: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        body.dark-mode #translate-btn {
+            background-color: #004080;
+        }
+
+        body.dark-mode #translate-btn:hover {
+            background-color: #00264d;
+        }
+
+        body.dark-mode #translate-btn i {
+            color: #ffffff;
+        }
+
+        body.dark-mode #translate-menu {
+            background-color: #222222;
+            border: 1px solid #555555;
+        }
+
+        body.dark-mode #translate-menu li a {
+            color: #ffffff;
+        }
+
+        body.dark-mode #translate-menu li a:hover::before,
+        body.dark-mode #translate-menu li a:hover::after {
+            background-color: #ffffff;
+        }
+
+        /* ............................................................................................................................  */
+        /* Versão  */
+
+        .unique-container {
+            width: 100%;
+            padding-top: 20px;
+            /* Espaço no topo */
+            display: flex;
+            justify-content: center;
+            /* Centraliza horizontalmente */
+        }
+
+        .unique-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .unique-dropbtn {
+            background-color: #f5f5f5;
+            /* Cor de fundo da página */
+            color: black;
+            padding: 20px 50px;
+            /* Padding aumentado para botão maior */
+            font-size: 32px;
+            /* Tamanho do texto igual a um h1 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            /* Fonte em negrito */
+        }
+
+        .unique-dropbtn:hover {
+            background-color: #e0e0e0;
+            /* Fundo mais escuro ao passar o mouse */
+        }
+
+        .unique-arrow-down {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid black;
+            /* Seta preta */
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        .unique-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            top: calc(100% + 5px);
+            /* Ajustado para evitar sobreposição direta */
+            left: 0;
+            right: 0;
+            margin: auto;
+            /* Centraliza automaticamente */
+        }
+
+        .unique-dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+        }
+
+        .unique-dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .unique-dropdown.show .unique-dropdown-content {
+            display: block;
+        }
+
+        .unique-dropdown.show .unique-arrow-down {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        /* Adicionando regra de mídia para telas menores */
+        @media (max-width: 600px) {
+            .unique-dropbtn {
+                font-size: 18px;
+                /* Tamanho de fonte menor em telas pequenas */
+            }
+        }
+
+
+
+
+
+
+
+
+
+        /* Mantenha o resto do CSS como está */
+
+        /* Estilos para telas maiores */
+        @media (min-width: 601px) {
+
+            /* Esconde o header de telas menores */
+            .header-mobile {
+                display: none;
+            }
+
+            /* Exibe o header padrão para telas maiores */
+            .header-desktop {
+                display: flex;
+                /* align-items: center; */
+                /* justify-content: space-between; */
+                padding: 10px 20px;
+                background-color: #f5f5f5;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+
+            .dark-mode-toggle {
+                display: block;
+            }
+
+            .menu-icon {
+                display: none;
+                /* Oculta o ícone do menu hamburguer */
+            }
+
+            nav {
+                display: flex;
+                align-items: center;
+            }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin-left: 20px;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: royalblue;
+                font-size: 18px;
+                transition: color 0.3s ease;
+            }
+
+            nav ul li a:hover {
+                color: #555;
+            }
+        }
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+
+            /* Esconde o header padrão para telas maiores */
+            .header-desktop {
+                display: none;
+            }
+
+            /* Exibe o header de telas menores */
+            .header-mobile {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 20px;
+                background-color: #f5f5f5;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+
+            .dark-mode-toggle {
+                display: block;
+            }
+
+            .menu-icon {
+                display: block;
+                /* Exibe o ícone do menu hamburguer */
+                cursor: pointer;
+            }
+
+            nav {
+                display: none;
+                /* Inicialmente oculta a navegação */
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                /* Altura do header */
+                left: 0;
+                background-color: #f5f5f5;
+            }
+
+            nav.open {
+                display: flex;
+                /* Exibe a navegação quando o menu é aberto */
+            }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin-top: 10px;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: royalblue;
+                font-size: 18px;
+                transition: color 0.3s ease;
+            }
+
+            nav ul li a:hover {
+                color: #555;
+            }
+        }
+
+
+        /* .......................................................................................................................  */
+        /* Header para telas menores  */
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+            .header-mobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .header-mobile .menu-icon {
+                display: block;
+            }
+
+            .header-mobile .menu-icon svg {
+                width: 30px;
+                height: auto;
+                cursor: pointer;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.show {
+                display: block;
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .mobile-nav ul li {
+                margin-bottom: 10px;
+            }
+
+            .mobile-nav ul li a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
+
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+            .header-mobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .header-mobile .menu-icon {
+                display: block;
+            }
+
+            .header-mobile .menu-icon svg {
+                width: 30px;
+                height: auto;
+                cursor: pointer;
+            }
+
+            .mobile-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .mobile-nav.show {
+                display: block;
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .mobile-nav ul li {
+                margin-bottom: 10px;
+            }
+
+            .mobile-nav ul li a {
+                text-decoration: none;
+                color: black;
+                display: block;
+                padding: 5px 0;
+            }
+        }
+
+
+
+
+
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+            .header-mobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .header-mobile .menu-icon {
+                display: block;
+            }
+
+            .header-mobile .menu-icon svg {
+                width: 30px;
+                height: auto;
+                cursor: pointer;
+            }
+
+            .mobile-nav {
+                display: none;
+                position: fixed;
+                /* Alteração da posição */
+                top: 100%;
+                /* Posicionamento abaixo do cabeçalho */
+                left: auto;
+                /* Redefinindo o posicionamento à esquerda */
+                right: 0;
+                /* Alinhando o menu à direita */
+                background-color: #f2f2f2;
+                /* Alteração da cor de fundo */
+                padding: 8px;
+                /* Redução do padding */
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                /* Adicionando sombra */
+                width: 150px;
+                /* Definindo a largura */
+                overflow: hidden;
+                /* Ocultando o conteúdo que ultrapassar a largura */
+                transition: width 0.3s ease;
+                /* Adicionando transição suave */
+            }
+
+            .mobile-nav.show {
+                display: block;
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                /* Alterando para disposição vertical */
+                align-items: flex-end;
+                /* Alinhamento à direita */
+            }
+
+            .mobile-nav ul li {
+                margin-bottom: 15px;
+            }
+
+            .mobile-nav ul li a {
+                text-decoration: none;
+                color: black;
+                display: block;
+                padding: 5px 0;
+                font-family: 'Roboto', sans-serif;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+            .header-mobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .header-mobile .menu-icon {
+                display: block;
+            }
+
+            .header-mobile .menu-icon svg {
+                width: 30px;
+                height: auto;
+                cursor: pointer;
+            }
+
+            .mobile-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                /* Alinhamento à direita */
+                background-color: #f2f2f2;
+                /* Cor de fundo */
+                padding: 10px;
+                border-radius: 5px;
+                max-width: 150px;
+                /* Largura máxima reduzida */
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+                /* Sombreamento */
+            }
+
+            .mobile-nav.show {
+                display: block;
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                /* Removendo margem padrão */
+            }
+
+            .mobile-nav ul li {
+                margin-bottom: 10px;
+            }
+
+            .mobile-nav ul li a {
+                text-decoration: none;
+                color: #4169e1;
+                display: block;
+                padding: 5px 0;
+            }
+        }
+
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+            .accessibility-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 999;
+                /* Garante que o botão esteja acima de outros elementos */
+            }
+
+            .accessibility-tools {
+                position: fixed;
+                bottom: 70px;
+                /* Ajuste a distância do botão */
+                right: 20px;
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                display: none;
+                /* Inicialmente oculto */
+                z-index: 999;
+                /* Garante que esteja acima de outros elementos */
+            }
+
+            .accessibility-tools.show {
+                display: block;
+            }
+
+            .accessibility-tools button {
+                display: block;
+                margin-bottom: 5px;
+                /* Espaçamento entre os botões */
+            }
+        }
+
+
+
+
+
+
+
+        /* Estilos para telas menores */
+        @media (max-width: 600px) {
+            .accessibility-button {
+                position: fixed;
+                bottom: 90px;
+                /* Ajuste a distância do botão */
+                right: 20px;
+                z-index: 999;
+                /* Garante que o botão esteja acima de outros elementos */
+                display: block;
+                /* Mostra o botão apenas em telas menores */
+                background-color: #007BFF;
+                /* Cor de fundo azul */
+                padding: 7.5px;
+                /* Ajuste o tamanho do botão */
+                border-radius: 50%;
+                /* Transforma em um círculo */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s;
+                /* Efeito de transição */
+            }
+
+            .accessibility-button:hover {
+                background-color: #0056b3;
+                /* Cor de fundo azul escuro no hover */
+            }
+
+            .accessibility-button i {
+                font-size: 24px;
+                /* Ajuste o tamanho do ícone */
+                color: white;
+                /* Cor do ícone */
+            }
+
+            .accessibility-tools {
+                position: fixed;
+                bottom: 150px;
+                /* Ajuste a distância do botão */
+                right: 20px;
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                display: none;
+                /* Inicialmente oculto */
+                z-index: 999;
+                /* Garante que esteja acima de outros elementos */
+                width: calc(100% - 40px);
+                /* Ajuste a largura */
+                max-width: 300px;
+                /* Largura máxima */
+            }
+
+            .accessibility-tools.show {
+                display: block;
+            }
+
+            .accessibility-tools button {
+                display: block;
+                margin-bottom: 10px;
+                /* Espaçamento entre os botões */
+                width: calc(100% - 20px);
+                /* Ajuste a largura */
+            }
+        }
+
+        /* Oculta o botão de acessibilidade em telas grandes */
+        @media (min-width: 601px) {
+            .accessibility-button {
+                display: none;
+            }
+        }
+
+
+        /* ...........................................................................................................................  */
+
+        /* Acessibilidade  */
+
+        .accessibility-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            /* Garante que o botão esteja acima de outros elementos */
+            display: block;
+            /* Mostra o botão apenas em telas menores */
+        }
+
+        .accessibility-tool {
+            position: fixed;
+            bottom: 70px;
+            /* Ajuste a distância do botão */
+            right: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+            /* Inicialmente oculto */
+            z-index: 999;
+            /* Garante que esteja acima de outros elementos */
+        }
+
+        .accessibility-tool.show {
+            display: block;
+        }
+
+        .accessibility-tool button {
+            display: block;
+            margin-bottom: 5px;
+            /* Espaçamento entre os botões */
+        }
+
+
+        /* Acessibilidade  */
+        .accessibility-btn {
+            background-color: #007BFF;
+            /* Azul Bootstrap */
+            color: white;
+            border: none;
+            padding: 6px 8px;
+            text-align: center;
+            text-decoration: bold;
+            display: inline-block;
+            font-size: 15px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+            /* Borda arredondada */
+            cursor: pointer;
+            /* Muda o cursor para indicar clicabilidade */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Transição suave para hover */
+            margin-right: 250px;
+            margin-bottom: 5px;
+            font-family: Roboto;
+        }
+
+        .accessibility-btn {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        .accessibility-btn:hover {
+            background-color: #007bff;
+        }
+
+        .accessibility-tool button {
+            background-color: #6c757d;
+            width: 48%;
+            margin-top: 5px;
+        }
+
+        .accessibility-tool button {
+            background-color: royalblue;
+            /* Fundo azul royal */
+            color: white;
+            /* Texto em branco */
+            font-weight: bold;
+            /* Texto em negrito */
+            padding: 5px 10px;
+            /* Espaçamento interno */
+            border: 2px solid transparent;
+            /* Borda transparente inicial */
+            border-radius: 5px;
+            /* Borda arredondada */
+            cursor: pointer;
+            /* Muda o cursor para indicar clicabilidade */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Transição suave para hover */
+        }
+
+        .accessibility-tool button:hover {
+            background-color: white;
+            /* Fundo fica branco */
+            color: royalblue;
+            /* Texto fica azul royal */
+            border-color: royalblue;
+            /* Borda azul royal */
+        }
+
+
+
+        .accessibility-tool a {
+            text-decoration: none;
+            /* Remove sublinhado dos links */
+        }
+
+        .accessibility-tool a:visited,
+        .accessibility-tool a:link {
+            color: inherit;
+            /* Mantém a cor herdada, sem alteração pelo link */
+        }
+
+        .accessibility-tool {
+            display: none;
+        }
+
+        /* ...........................................................................................................................  */
+
+        /* Dark Mode  */
+
+        /* Estilos para o modo escuro */
+        .dark-mode {
+            background-color: #333;
+            /* Cor de fundo escura */
+            color: #fff;
+            /* Cor do texto clara */
+            /* box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); */
+            /* Sombra escura */
+        }
+
+        .dark-mode button {
+            background-color: #0000;
+            /* Cor de fundo dos botões */
+            color: #fff;
+            /* Cor do texto dos botões */
+            border: none;
+            /* Remove a borda dos botões */
+        }
+
+        .dark-mode button:hover {
+            background-color: #666;
+            /* Cor de fundo dos botões no hover */
+        }
+
+
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .dark-mode .accessibility-button {
+            background-color: #555;
+        }
+
+        .dark-mode .mobile-nav {
+            background-color: #444;
+        }
+
+        .dark-mode .mobile-nav ul li a {
+            color: #fff;
+        }
+
+        .dark-mode .accessibility-btn {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        .dark-mode .accessibility-button {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        .dark-mode .accessibility-btn {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        /* ..........................................................................................................................  */
+        /* Arrumando botões para telas menores  */
+
+
+        @media only screen and (max-width: 600px) {
+            .book-button {
+                width: 50%;
+                /* Define a largura para ocupar metade da largura disponível */
+            }
+
+            .book-table {
+                width: 100%;
+                /* Define a largura da tabela para ocupar toda a largura disponível */
+            }
+
+            #read-button,
+            #back-to-chapters-button {
+                top: 95px;
+                /* Define a distância do topo da tela */
+                font-size: 15px;
+                /* Define o tamanho da fonte */
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            #translate-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .accessibility-button {
+                width: 40px;
+                height: 40px;
+                bottom: 65px;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            #back-to-books-button {
+                top: 105px;
+            }
+        }
+
+
+        /* ................................................................................................................  */
+
+        #copy-button,
+        #share-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            background-color: #3498db;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        #copy-button:hover,
+        #share-button:hover {
+            background-color: #2980b9;
+        }
+
+        #copy-button i,
+        #share-button i {
+            margin-right: 5px;
+        }
+
+
+        .nav {
+            justify-content: left;
+        }
+
+        /* Estilização padrão */
+        #table-container {
+            display: block;
+            /* Exibe o container da tabela por padrão */
+        }
+
+        #table-minor {
+            display: none;
+            /* Esconde o container menor por padrão */
+        }
+
+        /* Estilização para tela menor */
+        @media (max-width: 768px) {
+            #table-container {
+                display: none;
+                /* Esconde a tabela em telas menores */
+            }
+
+            #table-minor {
+                display: flex;
+                /* Usa Flexbox para centralização */
+                justify-content: center;
+                /* Centraliza horizontalmente */
+                align-items: center;
+                /* Centraliza verticalmente */
+                height: 100vh;
+                /* Ocupa toda a altura da tela */
+                margin-top: 1050px;
+            }
+        }
+
+        /* Estilização padrão */
+        #table-container {
+            display: block;
+            /* Exibe o container da tabela por padrão */
+        }
+
+        #minor-container {
+            display: none;
+            /* Esconde o container menor por padrão */
+        }
+
+        /* Estilização para tela menor */
+        @media (max-width: 768px) {
+            #table-container {
+                display: none;
+                /* Esconde a tabela em telas menores */
+            }
+
+            #minor-container {
+                display: flex;
+                /* Usa Flexbox para centralização */
+                justify-content: center;
+                /* Centraliza horizontalmente */
+                align-items: center;
+                /* Centraliza verticalmente */
+                height: 100vh;
+                /* Ocupa toda a altura da tela */
+            }
+        }
+
+        /* Garantir que todos os botões tenham o mesmo tamanho */
+        .book-button {
+            width: 100px;
+            /* Define a largura do botão */
+            height: 100px;
+            /* Define a altura do botão */
+        }
+
+
+        /* .............................................................................................................................................  */
+
+        .dark-mode .accessibility-btn:hover {
+            background-color: #5a00b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        .dark-mode .accessibility-tool {
+            background-color: #555;
+            width: 200px;
+            height: 125px;
+            color: #FFF;
+        }
+
+        .dark-mode .accessibility-tool button {
+            background-color: #5a00b3;
+            color: #FFF;
+            width: 100%;
+        }
+
+        .dark-mode .accessibility-tool button:hover {
+            background-color: #7533b7;
+            color: #FFF;
+        }
+
+        .accessibility-tool {
+            width: 200px;
+            height: 135px;
+            color: #FFF;
+        }
+
+        .accessibility-tool button {
+            color: #FFF;
+            width: 100%;
+        }
+
+        .dark-mode #title {
+            color: whitesmoke;
+        }
+
+
+        .dark-mode .btn {
+            background-color: #0008ff;
+        }
+
+        /* Modo escuro */
+        .dark-mode #content-container {
+            background-color: #555;
+            color: white;
+        }
+
+        .dark-mode #content-container .verse-number {
+            color: #ccc;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Estilo do botão */
+        #note-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #2345ec;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 99;
+        }
+
+        #note-button:hover {
+            background-color: #2980b9;
+        }
+
+        #note-button i {
+            font-size: 24px;
+        }
+
+        /* Estilos para o modo escuro */
+        .dark-mode .verse {
+            color: #fff;
+            background-color: #333;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode p {
+            color: #fff;
+        }
+
+        .dark-mode #content-container {
+            background-color: #121212;
+        }
+
+        /* Estilos para o modo de alto contraste */
+        .high-contrast .verse {
+            color: #000;
+            background-color: #ffd700;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .high-contrast p {
+            color: #000;
+            background-color: #ffd700;
+        }
+
+        /* Estilos para títulos em alto contraste */
+        .high-contrast #old-testament-title,
+        .high-contrast #new-testament-title {
+            color: #000;
+            background-color: #ffd700;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            /* Estilos para o modo escuro */
+            .dark-mode {
+                background-color: #000000;
+                /* color: rgb(156, 0, 0);  */
+            }
+
+            /* Estilos para os títulos no modo escuro */
+            .dark-mode #old-testament-title,
+            .dark-mode #new-testament-title {
+                /* background-color: #11ff00; */
+                color: rgb(255, 255, 255);
+                background-image: url('cor.png');
+            }
+
+            /* Estilos para a tabela no modo escuro */
+            .dark-mode .book-table td,
+            .dark-mode .book-table th {
+                background-color: rgb(18, 18, 18);
+                color: rgb(255, 255, 255);
+                /* border: 1px solid #582d00; */
+            }
+
+            /* Estilos para os botões no modo escuro */
+            /* .dark-mode .book-button {
+    border: 1px solid #c400cb;
+} */
+
+
+
+        }
+
+        .minor {
+        display: none;
+        height: 250px;
+        width: 100%;
+       }
+
+       /* Consulta de mídia para telas menores */
+@media (max-width: 768px) {
+    .minor {
+        display: block; /* Ou qualquer outra propriedade de exibição que desejar */
+    }
+}
+
+.space {
+  height: 150px;
+}
+
+#noteInput {
+  margin: 0 auto;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- header  -->
+    <header class="header-desktop">
+
+      <div class="logo">
+          <img src="2.png" alt="Logo">
+      </div>
+      <nav>
+          <ul>
+              <li><a href="../../biblia-tetelestai.html">Bíblia</a></li>
+              <li><a href="dicio.html">Dicionário</a></li>
+              <!-- <li class="dropdown">
+                  <span class="dropbtn">Idioma <i class="fas fa-angle-down"></i></span>
+                  <div class="dropdown-content">
+                      <span onclick="changeLanguage('pt')">Português</span>
+                      <span onclick="changeLanguage('en')">Inglês</span>
+                      <span onclick="changeLanguage('es')">Espanhol</span>
+                      <span onclick="changeLanguage('fr')">Francês</span>
+                  </div>
+              </li> -->
+          </ul>
+      </nav>
+      <!-- <div class="read-now">
+          <a href="https://exemplo.com/seu-link-aqui" target="_blank">
+              <button>
+                  <i class="fas fa-book-reader"></i> Leia já
+              </button>
+          </a> -->
+      <div class="acessibility">
+          <button class="accessibility-btn" onclick="toggleAccessibilityTool()">Acessibilidade <i
+                  class="fa fa-universal-access"></i></button>
+          <div class="accessibility-tool">
+              <button onclick="zoomIn()"><i class="fas fa-plus"></i> Aumentar Fonte</button>
+              <button onclick="zoomOut()"><i class="fas fa-minus"></i> Diminuir Fonte</button>
+              <button id="contrastButton" aria-pressed="false" onclick="toggleHighContrast()"><i
+                      class="fas fa-adjust"></i> Contraste</button>
+              <button onclick="toggleLineHighlight()"><i class="fas fa-text-height"></i> Linha de Leitura</button>
+          </div>
+      </div>
+
+      </div>
+
+
+      <div class="mode-toggle">
+          <button onclick="toggleMode()">Dark Mode <i class="fas fa-moon"></i></button>
+      </div>
+
+  </header>
+
+
+  <!-- Para telas menores -->
+  <header class="header-mobile">
+      <div class="logo">
+          <img src="2.png" alt="Logo">
+      </div>
+      <div class="mode-toggle">
+          <button onclick="toggleMode()">Dark Mode <i class="fas fa-moon"></i></button>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+      </div>
+      <nav class="mobile-nav">
+          <ul>
+              <li><a href="../../biblia-tetelestai.html">Bíblia</a></li>
+              <li><a href="dicio.html">Dicionário</a></li>
+              <!-- <li><a href="#">Contato</a></li> -->
+          </ul>
+      </nav>
+
+  </header>
+
+  <div class="space"></div>
+
+    <div id="noteInput" class="container">
+        <input type="text" id="noteTitle" placeholder="Título da Nota" class="form-control">
+        <textarea id="noteText" placeholder="Escreva sua nota aqui" class="form-control"></textarea>
+        <button id="saveButton" onclick="saveNote()" class="btn btn-primary">Salvar Nota</button>
+        <button id="updateButton" onclick="updateNote()" class="btn btn-success" style="display: none;">Atualizar Nota</button>
+    </div>
+    <div id="notesDisplay" class="container">
+        <!-- As notas serão exibidas aqui -->
+    </div>
+
+    <script>
+        var currentNote = null;
+
+        function saveNote() {
+            var title = document.getElementById('noteTitle').value;
+            var text = document.getElementById('noteText').value;
+
+            // Salvar a nota no cache do dispositivo
+            localStorage.setItem(title, text);
+
+            // Limpar os campos de entrada
+            clearInput();
+
+            // Atualizar a exibição das notas
+            displayNotes();
+        }
+
+        function updateNote() {
+            // Remover a nota antiga do cache do dispositivo
+            localStorage.removeItem(currentNote);
+
+            // Salvar a nota atualizada no cache do dispositivo
+            saveNote();
+        }
+
+        function displayNotes() {
+            var notesDisplay = document.getElementById('notesDisplay');
+            notesDisplay.innerHTML = '';
+
+            // Obter todas as notas
+            for (var i = 0; i < localStorage.length; i++) {
+                var title = localStorage.key(i);
+
+                // Criar elementos HTML para a nota
+                var noteDiv = document.createElement('div');
+                noteDiv.className = 'note';
+                var noteTitle = document.createElement('h2');
+                var viewButton = document.createElement('button');
+                var deleteButton = document.createElement('button');
+                var editButton = document.createElement('button');
+
+                // Definir o conteúdo dos elementos
+                noteTitle.textContent = title;
+                viewButton.textContent = 'Ver';
+                deleteButton.textContent = 'Excluir';
+                editButton.textContent = 'Editar';
+
+                // Adicionar classes aos botões
+                viewButton.className = 'view';
+                deleteButton.className = 'delete';
+                editButton.className = 'edit';
+
+                // Adicionar funcionalidade aos botões
+                viewButton.onclick = function() { viewNote(title); };
+                deleteButton.onclick = function() { deleteNote(title); };
+                editButton.onclick = function() { editNote(title); };
+
+                // Adicionar os elementos à div da nota
+                noteDiv.appendChild(noteTitle);
+                noteDiv.appendChild(viewButton);
+                noteDiv.appendChild(editButton);
+                noteDiv.appendChild(deleteButton);
+
+                // Adicionar a nota à exibição
+                notesDisplay.appendChild(noteDiv);
+            }
+        }
+
+        function viewNote(title) {
+            var text = localStorage.getItem(title);
+
+            // Criar uma nova janela e exibir a nota
+            var noteWindow = window.open('', '_blank');
+            noteWindow.document.write('<html><head><title>' + title + '</title><style>body { font-family: Helvetica Neue; padding: 20px; }</style></head><body><h1>' + title + '</h1><p>' + text + '</p></body></html>');
+        }
+
+        function editNote(title) {
+            var text = localStorage.getItem(title);
+
+            // Preencher os campos de entrada com os dados da nota
+            document.getElementById('noteTitle').value = title;
+            document.getElementById('noteText').value = text;
+
+            // Mostrar o botão "Atualizar" e ocultar o botão "Salvar"
+            document.getElementById('saveButton').style.display = 'none';
+            document.getElementById('updateButton').style.display = 'block';
+
+            // Armazenar o título da nota atual
+            currentNote = title;
+        }
+
+        function deleteNote(title) {
+            // Remover a nota do cache do dispositivo
+            localStorage.removeItem(title);
+
+            // Atualizar a exibição das notas
+            displayNotes();
+        }
+
+        function clearInput() {
+            // Limpar os campos de entrada
+            document.getElementById('noteTitle').value = '';
+            document.getElementById('noteText').value = '';
+
+            // Mostrar o botão "Salvar" e ocultar o botão "Atualizar"
+            document.getElementById('saveButton').style.display = 'block';
+            document.getElementById('updateButton').style.display = 'none';
+
+            // Limpar o título da nota atual
+            currentNote = null;
+        }
+
+        // Exibir as notas quando a página é carregada
+        window.onload = displayNotes;
+
+
+        // Header 
+
+        function toggleMode() {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            document.querySelector('header').classList.toggle('dark-mode-header');
+
+            const logoImage = document.querySelector('.logo img');
+            logoImage.src = isDarkMode ? '6.png' : '2.png';
+
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.parentElement.classList.contains('logo')) {
+                    img.classList.toggle('dark-img');
+                }
+            });
+
+            document.querySelectorAll('nav a, nav span, .dropbtn, .dropdown-content span').forEach(link => {
+                link.classList.toggle('dark-mode-text');
+            });
+
+            document.body.style.backgroundColor = isDarkMode ? "#121212" : "#f2f2f2";
+            document.body.style.color = isDarkMode ? "#121212" : "black";
+
+            const modeToggleButton = document.querySelector('.mode-toggle button');
+            if (isDarkMode) {
+                modeToggleButton.innerHTML = 'Light Mode <i class="fas fa-sun"></i>';
+            } else {
+                modeToggleButton.innerHTML = 'Dark Mode <i class="fas fa-moon"></i>';
+            }
+
+            document.body.style.animation = isDarkMode ? 'darkModeAnimation 0.5s' : 'none';
+
+            const oldTestamentTitle = document.getElementById('old-testament-title');
+            const newTestamentTitle = document.getElementById('new-testament-title');
+
+            if (oldTestamentTitle.classList.contains('dark-mode')) {
+                oldTestamentTitle.classList.remove('dark-mode');
+                oldTestamentTitle.style.color = '';
+                oldTestamentTitle.style.backgroundColor = '#f2f2f2';
+            } else {
+                oldTestamentTitle.classList.add('dark-mode');
+                oldTestamentTitle.style.color = 'white';
+                oldTestamentTitle.style.backgroundColor = '#121212';
+            }
+
+            if (newTestamentTitle && newTestamentTitle.classList.contains('dark-mode')) {
+                newTestamentTitle.classList.remove('dark-mode');
+                newTestamentTitle.style.color = '';
+                newTestamentTitle.style.backgroundColor = '#f2f2f2';
+            } else if (newTestamentTitle) {
+                newTestamentTitle.classList.add('dark-mode');
+                newTestamentTitle.style.color = 'white';
+                newTestamentTitle.style.backgroundColor = '#121212';
+            }
+        }
+
+        // Acessibilidade 
+        function toggleAccessibilityTool() {
+            const tools = document.querySelector('.accessibility-tool');
+            const button = document.querySelector('.accessibility-btn');
+            tools.style.top = `60px`; // Posiciona as ferramentas logo abaixo do botão
+            tools.style.left = `635px`; // Centraliza horizontalmente
+            tools.style.display = tools.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // function zoomIn() {
+        //     document.body.style.zoom = "125%";
+        // }
+
+        // function zoomOut() {
+        //     document.body.style.zoom = "100%";
+        // }
+
+        // function toggleHighContrast() {
+        //     var body = document.body;
+        //     body.classList.toggle('high-contrast');
+        //     var isPressed = body.classList.contains('high-contrast');
+        //     document.getElementById('contrastButton').setAttribute('aria-pressed', isPressed);
+        // }
+
+        // Funções de acessibilidade
+        function toggleAccessibilityTools() {
+            const tools = document.getElementById('accessibilityTools');
+            tools.style.display = tools.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function zoomIn() {
+            const currentZoom = parseFloat(document.body.style.zoom || 1);
+            if (currentZoom < 1.3) { // Limite de 30% além do zoom inicial
+                document.body.style.zoom = (currentZoom + 0.1).toString();
+            }
+        }
+
+
+        function zoomOut() {
+            const currentZoom = parseFloat(document.body.style.zoom || 1);
+            if (currentZoom > 0.7) {
+                document.body.style.zoom = (currentZoom - 0.1).toString();
+            }
+        }
+
+
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            const button = document.getElementById('contrastButton');
+            const pressed = button.getAttribute('aria-pressed') === 'true';
+            button.setAttribute('aria-pressed', !pressed);
+        }
+
+        function toggleLineHighlight() {
+            const line = document.getElementById('readingLine');
+            if (line.style.display === 'none' || line.style.display === '') {
+                line.style.display = 'block';
+                makeLineDraggable(line);
+            } else {
+                line.style.display = 'none';
+            }
+        }
+
+        function makeLineDraggable(elem) {
+            var pos1 = 0, pos2 = 0;
+            elem.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos2 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos2 - e.clientY;
+                pos2 = e.clientY;
+                elem.style.top = (elem.offsetTop - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        function toggleHighContrast() {
+            var body = document.body;
+            body.classList.toggle('high-contrast');
+            var isPressed = body.classList.contains('high-contrast');
+            document.getElementById('contrastButton').setAttribute('aria-pressed', isPressed);
+        }
+
+         // Header menu 
+
+
+         function toggleMenu() {
+            var mobileNav = document.querySelector('.mobile-nav');
+            mobileNav.classList.toggle('show');
+        }
+
+
+        // Acessibilidade
+
+        function toggleAccessibilityTools() {
+            var tools = document.getElementById('accessibilityTools');
+            tools.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
