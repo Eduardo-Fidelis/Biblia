@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versículo do dia</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="2.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            /* Aumentado de 20px para 40px */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-width: 800px;
+            /* Aumentado de 600px para 800px */
+            font-size: 20px;
+            /* Aumento do tamanho da fonte */
+        }
+
+        .accessibility-tools {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #555;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            /* Garante que fique na frente */
+        }
+
+        .accessibility-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            position: relative;
+            /* Relativo para aplicar z-index */
+            z-index: 10;
+            /* Assegura que esteja na frente de outros elementos */
+        }
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #4169e1;
+            color: white;
+            margin: 5px;
+            border: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .accessibility-tools button {
+            background-color: #6c757d;
+            width: 48%;
+            margin-top: 5px;
+        }
+
+        .high-contrast {
+            background-color: black;
+            color: white;
+            border-color: #ffffff;
+        }
+
+        .high-contrast button {
+            background-color: #ffffff;
+            color: black;
+            border-color: black;
+        }
+
+        #readingLine {
+            width: calc(100% - 640px);
+            height: 5px;
+            background-color: orange;
+            border: 1px solid black;
+            position: absolute;
+            display: none;
+        }
+
+        .verse-text {
+            font-size: 25px;
+            /* Aumenta a fonte do versículo */
+            font-weight: bold;
+            /* Deixa o texto do versículo em negrito */
+        }
+
+        .reference-text {
+            font-size: 20px;
+            /* Diminui a fonte da referência */
+            font-weight: bold;
+            /* Mantém a referência sem negrito */
+            color: #555;
+        }
+
+        .special-button {
+            background-color: #6a0dad;
+            /* Roxo */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+
+        .special-button:hover {
+            background-color: #7c1df9;
+            /* Roxo mais claro */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Cor de fundo padrão */
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode body {
+            background-color: #333;
+            /* Cor de fundo para o dark mode */
+        }
+
+        header {
+            position: fixed;
+            /* Torna o menu fixo na parte superior */
+            top: 0;
+            /* Posiciona o menu no topo da página */
+            width: 70%;
+            /* Reduz a largura do menu */
+            z-index: 1000;
+            /* Garante que o menu esteja acima de outros elementos */
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Centraliza os elementos e deixa o logo e o botão darkmode nas extremidades */
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode header {
+            background-color: #222;
+            /* Cor de fundo para o dark mode */
+        }
+
+        .logo img {
+            width: 80px;
+            /* Aumenta o tamanho da logo */
+            height: 80px;
+            /* Aumenta o tamanho da logo */
+            transition: filter 0.3s ease;
+        }
+
+        .dark-mode .logo img {
+            filter: brightness(0.8);
+            /* Reduz o brilho da logo no dark mode */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: royalblue;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode nav ul li a {
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+        }
+
+        nav ul li a:hover {
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            /* Faz o menu dropdown aparecer abaixo do texto */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222;
+            /* Cinza escuro para o dark mode */
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+            /* Garante que o menu dropdown apareça sobre outros elementos */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            /* Mostra o menu dropdown quando passa o mouse sobre o texto */
+        }
+
+        .dropdown-content span {
+            display: block;
+            margin-bottom: 5px;
+            /* Adiciona um espaço entre as opções do dropdown */
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .dropdown-content span {
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+        }
+
+        .dropdown-content span:hover {
+            text-decoration: underline;
+            /* Sublinhado ao passar o mouse */
+        }
+
+        .mode-toggle {
+            margin-right: 30px;
+            /* Espaçamento entre o menu dropdown e o botão dark mode */
+        }
+
+        .mode-toggle button {
+            background-color: #2c3e50;
+            /* Azul escuro para o dark mode */
+            color: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            /* Aumenta o arredondamento do botão */
+            padding: 15px 30px;
+            /* Aumenta o tamanho do botão */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode .mode-toggle button {
+            background-color: #6a0dad;
+            /* Roxo escuro para o dark mode */
+        }
+
+        .mode-toggle button:hover {
+            background-color: #34495e;
+            /* Tom de azul mais escuro para o hover */
+        }
+
+        .dark-mode .mode-toggle button:hover {
+            background-color: #4c0783;
+            /* Tom de roxo mais escuro para o hover */
+        }
+
+        /* Animations */
+        @keyframes darkModeAnimation {
+            from {
+                filter: brightness(1);
+            }
+
+            to {
+                filter: brightness(0.5);
+            }
+        }
+
+        header {
+            position: fixed;
+            /* Mantém o menu fixo na parte superior */
+            top: 20px;
+            /* Adiciona espaço entre o topo da tela e o menu */
+            left: 50%;
+            /* Centraliza o menu horizontalmente */
+            transform: translateX(-50%);
+            /* Ajusta o ponto central do menu */
+            width: 70%;
+            /* Mantém a largura do menu */
+            z-index: 1000;
+            /* Garante que o menu fique acima de outros elementos */
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            /* Reduz o preenchimento para diminuir a altura */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Distribui o espaço entre os elementos dentro do menu */
+            transition: background-color 0.3s ease;
+        }
+
+        .logo img {
+            width: 60px;
+            /* Diminui o tamanho da logo */
+            height: 60px;
+            /* Diminui o tamanho da logo */
+            transition: filter 0.3s ease;
+        }
+
+        /* Mantenha o resto do CSS como está */
+
+        .dark-mode-text,
+        .dark-mode-header,
+        .dropdown-content span {
+            color: #FFFFFF;
+            /* Define o texto para branco */
+        }
+
+        nav a,
+        nav span,
+        .dropbtn,
+        .dropdown-content span {
+            font-weight: bold;
+        }
+
+        .mode-toggle button {
+            font-weight: bold;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: royalblue;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            position: relative;
+            /* Necessário para o posicionamento absoluto de ::before e ::after */
+            padding: 10px 0;
+            /* Aumenta o espaçamento vertical */
+        }
+
+        nav ul li a::before,
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            /* Aumenta a espessura da linha */
+            background-color: royalblue;
+            /* Cor da linha */
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            /* Começa sem visibilidade */
+        }
+
+        nav ul li a::before {
+            top: -5px;
+            /* Mantém a posição acima do texto */
+        }
+
+        nav ul li a::after {
+            bottom: -5px;
+            /* Mantém a posição abaixo do texto */
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            /* Expande a linha ao passar o mouse */
+        }
+
+        /* Estilos para o modo dark */
+        .dark-mode nav ul li a::before,
+        .dark-mode nav ul li a::after {
+            background-color: #ddd;
+            /* Cor da linha para o modo dark */
+        }
+
+        nav {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav a {
+            font-weight: 700;
+            /* Aplica o peso negrito */
+        }
+
+        .full-width-div {
+            height: 130px;
+            /* Altura ajustada para 150px */
+            width: 100%;
+            background-color: inherit;
+            /* Herda a cor de fundo do body */
+        }
+
+        /* Estilos para dark mode */
+        .dark-mode {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+
+        .dark-mode-button {
+            background-color: #333;
+            color: #FFF;
+        }
+
+        .dark-mode-text {
+            color: #CCC;
+        }
+
+        .dark-mode-header {
+            background-color: #1A1A1A;
+        }
+
+        .dark-mode div,
+        .dark-mode p,
+        .dark-mode a {
+            background-color: #2B2B2B;
+            color: #DDD;
+        }
+
+        /* Estilos para botão de acessibilidade */
+        .accessibility-button {
+            background-color: #007BFF;
+            /* Azul Bootstrap */
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .accessibility-button {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        /* Modificações para o modo escuro */
+    .dark-mode header {
+        background-color: #222; /* Cor de fundo do cabeçalho no modo escuro */
+    }
+
+    .dark-mode .reference-text {
+        color: white; /* Cor do texto de referência no modo escuro */
+    }
+
+    .dark-mode .mode-toggle {
+        background-color: #222; /* Cor ao redor do botão dark mode no modo escuro */
+    }
+
+    /* Assegura que os links no cabeçalho têm uma cor de texto que contrasta com o fundo escuro */
+    .dark-mode header a {
+        color: white;
+    }
+
+    /* Leia já  */
+
+.read-now button {
+    background-color: royalblue; /* Fundo azul royal */
+    color: white; /* Texto em branco */
+    font-weight: bold; /* Texto em negrito */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: 2px solid transparent; /* Borda transparente inicial */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Muda o cursor para indicar clicabilidade */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transição suave para hover */
+}
+
+.read-now button:hover {
+    background-color: white; /* Fundo fica branco */
+    color: royalblue; /* Texto fica azul royal */
+    border-color: royalblue; /* Borda azul royal */
+}
+
+
+
+.read-now a {
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+
+.read-now a:visited, .read-now a:link {
+    color: inherit; /* Mantém a cor herdada, sem alteração pelo link */
+}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            /* Aumentado de 20px para 40px */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-width: 800px;
+            /* Aumentado de 600px para 800px */
+            font-size: 20px;
+            /* Aumento do tamanho da fonte */
+        }
+
+        .accessibility-tools {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #555;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            /* Garante que fique na frente */
+        }
+
+        .accessibility-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            position: relative;
+            /* Relativo para aplicar z-index */
+            z-index: 10;
+            /* Assegura que esteja na frente de outros elementos */
+        }
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #4169e1;
+            color: white;
+            margin: 5px;
+            border: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .accessibility-tools button {
+            background-color: #6c757d;
+            width: 48%;
+            margin-top: 5px;
+        }
+
+        .high-contrast {
+            background-color: black;
+            color: white;
+            border-color: #ffffff;
+        }
+
+        .high-contrast button {
+            background-color: #ffffff;
+            color: black;
+            border-color: black;
+        }
+
+        #readingLine {
+            width: calc(100% - 640px);
+            height: 5px;
+            background-color: orange;
+            border: 1px solid black;
+            position: absolute;
+            display: none;
+        }
+
+        .verse-text {
+            font-size: 25px;
+            /* Aumenta a fonte do versículo */
+            font-weight: bold;
+            /* Deixa o texto do versículo em negrito */
+        }
+
+        .reference-text {
+            font-size: 20px;
+            /* Diminui a fonte da referência */
+            font-weight: bold;
+            /* Mantém a referência sem negrito */
+            color: #555;
+        }
+
+        .special-button {
+            background-color: #6a0dad;
+            /* Roxo */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+
+        .special-button:hover {
+            background-color: #7c1df9;
+            /* Roxo mais claro */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Cor de fundo padrão */
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode body {
+            background-color: #333;
+            /* Cor de fundo para o dark mode */
+        }
+
+        header {
+            position: fixed;
+            /* Torna o menu fixo na parte superior */
+            top: 0;
+            /* Posiciona o menu no topo da página */
+            width: 70%;
+            /* Reduz a largura do menu */
+            z-index: 1000;
+            /* Garante que o menu esteja acima de outros elementos */
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Centraliza os elementos e deixa o logo e o botão darkmode nas extremidades */
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode header {
+            background-color: #222;
+            /* Cor de fundo para o dark mode */
+        }
+
+        .logo img {
+            width: 80px;
+            /* Aumenta o tamanho da logo */
+            height: 80px;
+            /* Aumenta o tamanho da logo */
+            transition: filter 0.3s ease;
+        }
+
+        .dark-mode .logo img {
+            filter: brightness(0.8);
+            /* Reduz o brilho da logo no dark mode */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: royalblue;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode nav ul li a {
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+        }
+
+        nav ul li a:hover {
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            /* Faz o menu dropdown aparecer abaixo do texto */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222;
+            /* Cinza escuro para o dark mode */
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+            /* Garante que o menu dropdown apareça sobre outros elementos */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            /* Mostra o menu dropdown quando passa o mouse sobre o texto */
+        }
+
+        .dropdown-content span {
+            display: block;
+            margin-bottom: 5px;
+            /* Adiciona um espaço entre as opções do dropdown */
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .dropdown-content span {
+            color: #ddd;
+            /* Letras em cinza claro para o dark mode */
+        }
+
+        .dropdown-content span:hover {
+            text-decoration: underline;
+            /* Sublinhado ao passar o mouse */
+        }
+
+        .mode-toggle {
+            margin-right: 30px;
+            /* Espaçamento entre o menu dropdown e o botão dark mode */
+        }
+
+        .mode-toggle button {
+            background-color: #2c3e50;
+            /* Azul escuro para o dark mode */
+            color: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            /* Aumenta o arredondamento do botão */
+            padding: 15px 30px;
+            /* Aumenta o tamanho do botão */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode .mode-toggle button {
+            background-color: #6a0dad;
+            /* Roxo escuro para o dark mode */
+        }
+
+        .mode-toggle button:hover {
+            background-color: #34495e;
+            /* Tom de azul mais escuro para o hover */
+        }
+
+        .dark-mode .mode-toggle button:hover {
+            background-color: #4c0783;
+            /* Tom de roxo mais escuro para o hover */
+        }
+
+        /* Animations */
+        @keyframes darkModeAnimation {
+            from {
+                filter: brightness(1);
+            }
+
+            to {
+                filter: brightness(0.5);
+            }
+        }
+
+        header {
+            position: fixed;
+            /* Mantém o menu fixo na parte superior */
+            top: 20px;
+            /* Adiciona espaço entre o topo da tela e o menu */
+            left: 50%;
+            /* Centraliza o menu horizontalmente */
+            transform: translateX(-50%);
+            /* Ajusta o ponto central do menu */
+            width: 70%;
+            /* Mantém a largura do menu */
+            z-index: 1000;
+            /* Garante que o menu fique acima de outros elementos */
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            /* Reduz o preenchimento para diminuir a altura */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Distribui o espaço entre os elementos dentro do menu */
+            transition: background-color 0.3s ease;
+        }
+
+        .logo img {
+            width: 60px;
+            /* Diminui o tamanho da logo */
+            height: 60px;
+            /* Diminui o tamanho da logo */
+            transition: filter 0.3s ease;
+        }
+
+        /* Mantenha o resto do CSS como está */
+
+        .dark-mode-text,
+        .dark-mode-header,
+        .dropdown-content span {
+            color: #FFFFFF;
+            /* Define o texto para branco */
+        }
+
+        nav a,
+        nav span,
+        .dropbtn,
+        .dropdown-content span {
+            font-weight: bold;
+        }
+
+        .mode-toggle button {
+            font-weight: bold;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: royalblue;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            position: relative;
+            /* Necessário para o posicionamento absoluto de ::before e ::after */
+            padding: 10px 0;
+            /* Aumenta o espaçamento vertical */
+        }
+
+        nav ul li a::before,
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            /* Aumenta a espessura da linha */
+            background-color: royalblue;
+            /* Cor da linha */
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            /* Começa sem visibilidade */
+        }
+
+        nav ul li a::before {
+            top: -5px;
+            /* Mantém a posição acima do texto */
+        }
+
+        nav ul li a::after {
+            bottom: -5px;
+            /* Mantém a posição abaixo do texto */
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            /* Expande a linha ao passar o mouse */
+        }
+
+        /* Estilos para o modo dark */
+        .dark-mode nav ul li a::before,
+        .dark-mode nav ul li a::after {
+            background-color: #ddd;
+            /* Cor da linha para o modo dark */
+        }
+
+        nav {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav a {
+            font-weight: 700;
+            /* Aplica o peso negrito */
+        }
+
+        .full-width-div {
+            height: 130px;
+            /* Altura ajustada para 150px */
+            width: 100%;
+            background-color: inherit;
+            /* Herda a cor de fundo do body */
+        }
+
+        /* Estilos para dark mode */
+        .dark-mode {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+
+        .dark-mode-button {
+            background-color: #333;
+            color: #FFF;
+        }
+
+        .dark-mode-text {
+            color: #CCC;
+        }
+
+        .dark-mode-header {
+            background-color: #1A1A1A;
+        }
+
+        .dark-mode div,
+        .dark-mode p,
+        .dark-mode a {
+            background-color: #2B2B2B;
+            color: #DDD;
+        }
+
+        /* Estilos para botão de acessibilidade */
+        .accessibility-button {
+            background-color: #007BFF;
+            /* Azul Bootstrap */
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .accessibility-button {
+            background-color: #0056b3;
+            /* Azul escuro */
+            color: #FFF;
+        }
+
+        /* Modificações para o modo escuro */
+    .dark-mode header {
+        background-color: #222; /* Cor de fundo do cabeçalho no modo escuro */
+    }
+
+    .dark-mode .reference-text {
+        color: white; /* Cor do texto de referência no modo escuro */
+    }
+
+    .dark-mode .mode-toggle {
+        background-color: #222; /* Cor ao redor do botão dark mode no modo escuro */
+    }
+
+    /* Assegura que os links no cabeçalho têm uma cor de texto que contrasta com o fundo escuro */
+    .dark-mode header a {
+        color: white;
+    }
+
+    /* Leia já  */
+
+.read-now button {
+    background-color: royalblue; /* Fundo azul royal */
+    color: white; /* Texto em branco */
+    font-weight: bold; /* Texto em negrito */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: 2px solid transparent; /* Borda transparente inicial */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Muda o cursor para indicar clicabilidade */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transição suave para hover */
+}
+
+.read-now button:hover {
+    background-color: white; /* Fundo fica branco */
+    color: royalblue; /* Texto fica azul royal */
+    border-color: royalblue; /* Borda azul royal */
+}
+
+
+
+.read-now a {
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+
+.read-now a:visited, .read-now a:link {
+    color: inherit; /* Mantém a cor herdada, sem alteração pelo link */
+}
+
+/* Estilos para telas maiores */
+@media (min-width: 601px) {
+
+/* Esconde o header de telas menores */
+.header-mobile {
+    display: none;
+}
+
+/* Exibe o header padrão para telas maiores */
+.header-desktop {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.dark-mode-toggle {
+    display: block;
+}
+
+.menu-icon {
+    display: none;
+    /* Oculta o ícone do menu hamburguer */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: royalblue;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #555;
+}
+}
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+
+/* Esconde o header padrão para telas maiores */
+.header-desktop {
+    display: none;
+}
+
+/* Exibe o header de telas menores */
+.header-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.dark-mode-toggle {
+    display: block;
+}
+
+.menu-icon {
+    display: block;
+    /* Exibe o ícone do menu hamburguer */
+    cursor: pointer;
+}
+
+nav {
+    display: none;
+    /* Inicialmente oculta a navegação */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    /* Altura do header */
+    left: 0;
+    background-color: #f5f5f5;
+}
+
+nav.open {
+    display: flex;
+    /* Exibe a navegação quando o menu é aberto */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-top: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: royalblue;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #555;
+}
+}
+
+
+/* .......................................................................................................................  */
+/* Header para telas menores  */
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+.header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-mobile .menu-icon {
+    display: block;
+}
+
+.header-mobile .menu-icon svg {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+.mobile-nav.show {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-nav ul li {
+    margin-bottom: 10px;
+}
+
+.mobile-nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+}
+
+
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+.header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-mobile .menu-icon {
+    display: block;
+}
+
+.header-mobile .menu-icon svg {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.mobile-nav.show {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-nav ul li {
+    margin-bottom: 10px;
+}
+
+.mobile-nav ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px 0;
+}
+}
+
+
+
+
+
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+.header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-mobile .menu-icon {
+    display: block;
+}
+
+.header-mobile .menu-icon svg {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    /* Alteração da posição */
+    top: 100%;
+    /* Posicionamento abaixo do cabeçalho */
+    left: auto;
+    /* Redefinindo o posicionamento à esquerda */
+    right: 0;
+    /* Alinhando o menu à direita */
+    background-color: #f2f2f2;
+    /* Alteração da cor de fundo */
+    padding: 8px;
+    /* Redução do padding */
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Adicionando sombra */
+    width: 150px;
+    /* Definindo a largura */
+    overflow: hidden;
+    /* Ocultando o conteúdo que ultrapassar a largura */
+    transition: width 0.3s ease;
+    /* Adicionando transição suave */
+}
+
+.mobile-nav.show {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /* Alterando para disposição vertical */
+    align-items: flex-end;
+    /* Alinhamento à direita */
+}
+
+.mobile-nav ul li {
+    margin-bottom: 15px;
+}
+
+.mobile-nav ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+}
+
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+.header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-mobile .menu-icon {
+    display: block;
+}
+
+.header-mobile .menu-icon svg {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    /* Alinhamento à direita */
+    background-color: #f2f2f2;
+    /* Cor de fundo */
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 150px;
+    /* Largura máxima reduzida */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombreamento */
+}
+
+.mobile-nav.show {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* Removendo margem padrão */
+}
+
+.mobile-nav ul li {
+    margin-bottom: 10px;
+}
+
+.mobile-nav ul li a {
+    text-decoration: none;
+    color: #4169e1;
+    display: block;
+    padding: 5px 0;
+}
+}
+
+    </style>
+</head>
+<header class="header-desktop">
+
+    <div class="logo">
+        <img src="2.png" alt="Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="versododia.html">Verso do Dia</a></li>
+            <li><a href="dicio.html">Dicionário</a></li>
+            <!-- <li class="dropdown">
+                <span class="dropbtn">Idioma <i class="fas fa-angle-down"></i></span>
+                <div class="dropdown-content">
+                    <span onclick="changeLanguage('pt')">Português</span>
+                    <span onclick="changeLanguage('en')">Inglês</span>
+                    <span onclick="changeLanguage('es')">Espanhol</span>
+                    <span onclick="changeLanguage('fr')">Francês</span>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+    <!-- <div class="read-now">
+        <a href="https://exemplo.com/seu-link-aqui" target="_blank">
+            <button>
+                <i class="fas fa-book-reader"></i> Leia já
+            </button>
+        </a> -->
+    
+
+    </div>
+
+    <div class="read-now">
+        <a href="biblia-tetelestai.html" target="_blank">
+            <button>
+                <i class="fas fa-book-reader"></i> Leia já
+            </button>
+        </a>
+    </div>
+    <div class="mode-toggle">
+        <button onclick="toggleMode()">Dark Mode <i class="fas fa-moon"></i></button>
+    </div>
+
+</header>
+<!-- Para telas menores -->
+<header class="header-mobile">
+    <div class="logo">
+        <img src="2.png" alt="Logo">
+    </div>
+    <div class="mode-toggle">
+        <button onclick="toggleMode()">Dark Mode <i class="fas fa-moon"></i></button>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </div>
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="versododia.html">Verso do Dia</a></li>
+            <li><a href="dicio.html">Dicionário</a></li>
+            <!-- <li><a href="#">Contato</a></li> -->
+            <div class="read-now">
+                <a href="biblia-tetelestai.html" target="_blank">
+                    <button>
+                        <i class="fas fa-book-reader"></i> Leia já
+                    </button>
+                </a>
+            </div>
+        </ul>
+    </nav>
+
+</header>
+<body>
+    <div class="container" id="mainContainer">
+        <div id="readingLine"></div>
+        <span class="verse-text" id="verse">Clique em "Receber Palavra" para você ser edificado por um Versículo
+            Bíblico.</span><br><br>
+        <span class="reference-text" id="reference"></span>
+        <div class="buttons">
+            <button id="generateButton" onclick="fetchVerse()"><i class="fa fa-sync-alt"></i> Receber Palavra</button>
+            <!-- Botões de ação -->
+            <div style="display: flex; gap: 10px;">
+                <button id="copyButton" onclick="copyVerse()" class="special-button"><i class="fa fa-copy"></i>
+                    Copiar</button>
+                <button id="shareButton" onclick="shareVerse()" class="special-button"><i class="fa fa-share-alt"></i>
+                    Compartilhar</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <button class="accessibility-button" onclick="toggleAccessibilityTools()">Acessibilidade <i
+            class="fa fa-universal-access"></i></button>
+    <div class="accessibility-tools">
+        <button onclick="increaseFontSize()"><i class="fas fa-plus"></i> Aumentar Fonte</button>
+        <button onclick="decreaseFontSize()"><i class="fas fa-minus"></i> Diminuir Fonte</button>
+        <button onclick="toggleContrast()"><i class="fas fa-adjust"></i> Contraste</button>
+        <button onclick="toggleLineHighlight()"><i class="fas fa-text-height"></i> Linha de Leitura</button>
+    </div>
+
+    <script>
+        function toggleAccessibilityTools() {
+            const tools = document.querySelector('.accessibility-tools');
+            const button = document.querySelector('.accessibility-button');
+            tools.style.top = `${button.offsetTop + button.offsetHeight}px`; // Posiciona as ferramentas logo abaixo do botão
+            tools.style.left = `${button.offsetLeft + button.clientWidth / 2 - tools.clientWidth / 2}px`; // Centraliza horizontalmente
+            tools.style.display = tools.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function fetchVerse() {
+            fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
+                .then(response => response.json())
+                .then(data => {
+                    const verseText = document.getElementById('verse');
+                    const referenceText = document.getElementById('reference');
+                    verseText.textContent = data.text;
+                    referenceText.textContent = `${data.book.name} ${data.chapter}:${data.number}`;
+                    document.getElementById('copyButton').style.display = 'block';
+                    document.getElementById('shareButton').style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar o versículo:', error);
+                    document.getElementById('verse').textContent = 'Falha ao carregar o versículo.';
+                    document.getElementById('reference').textContent = '';
+                    document.getElementById('copyButton').style.display = 'none';
+                    document.getElementById('shareButton').style.display = 'none';
+                });
+        }
+
+
+        function copyVerse() {
+            const verseToCopy = document.getElementById('verse').textContent + " - " + document.getElementById('reference').textContent;
+            navigator.clipboard.writeText(verseToCopy)
+                .then(() => alert('Versículo copiado com sucesso!'))
+                .catch(err => alert('Erro ao copiar versículo: ' + err));
+        }
+
+        function shareVerse() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Versículo Bíblico',
+                    text: document.getElementById('verse').textContent + ' - ' + document.getElementById('reference').textContent,
+                    url: document.URL
+                })
+                    .then(() => console.log('Versículo compartilhado com sucesso!'))
+                    .catch(error => console.error('Erro ao compartilhar versículo:', error));
+            } else {
+                alert('Compartilhamento não suportado neste navegador.');
+            }
+        }
+
+        function increaseFontSize() {
+            const verse = document.getElementById('verse');
+            const currentSize = parseFloat(window.getComputedStyle(verse).fontSize);
+            verse.style.fontSize = `${currentSize + 2}px`;
+        }
+
+        function decreaseFontSize() {
+            const verse = document.getElementById('verse');
+            const currentSize = parseFloat(window.getComputedStyle(verse).fontSize);
+            verse.style.fontSize = `${currentSize - 2}px`;
+        }
+
+        function toggleContrast() {
+            const mainContainer = document.getElementById('mainContainer');
+            mainContainer.classList.toggle('high-contrast');
+        }
+
+        function toggleLineHighlight() {
+            const line = document.getElementById('readingLine');
+            if (line.style.display === 'none' || line.style.display === '') {
+                line.style.display = 'block';
+                makeLineDraggable(line);
+            } else {
+                line.style.display = 'none';
+            }
+        }
+
+        function makeLineDraggable(elem) {
+            var pos1 = 0, pos2 = 0;
+            elem.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos2 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos2 - e.clientY;
+                pos2 = e.clientY;
+                elem.style.top = (elem.offsetTop - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        function toggleMode() {
+    const isDarkMode = document.body.classList.toggle('dark-mode');
+    document.querySelectorAll('.logo img, header, div, p, a, button').forEach(elem => {
+        elem.classList.toggle('dark-mode');
+    });
+
+    const referenceText = document.querySelectorAll('.reference-text'); // Seleciona todos os elementos com a classe 'reference'
+    referenceText.forEach(ref => {
+        ref.style.color = isDarkMode ? 'white' : ''; // Muda a cor do texto para branco no dark mode, e remove a estilização quando não está em dark mode
+    });
+
+    const headerLinks = document.querySelectorAll('header nav a, header nav span, .dropbtn, .dropdown-content span');
+    const headerBackgroundColor = isDarkMode ? '#222' : ''; 
+    headerLinks.forEach(link => {
+        link.style.backgroundColor = headerBackgroundColor;
+        link.classList.toggle('dark-mode-text');
+    });
+
+    const logoImage = document.querySelector('.logo img');
+    logoImage.src = isDarkMode ? '6.png' : '2.png';
+
+    const modeToggleButton = document.querySelector('.mode-toggle button');
+    if (isDarkMode) {
+        modeToggleButton.innerHTML = 'Light Mode <i class="fas fa-sun"></i>';
+    } else {
+        modeToggleButton.innerHTML = 'Dark Mode <i class="fas fa-moon"></i>';
+    }
+
+    document.body.style.animation = isDarkMode ? 'darkModeAnimation 0.5s' : 'none';
+}
+
+
+
+        // ................................................................................................................................... 
+        // Header menu 
+
+
+        function toggleMenu() {
+            var mobileNav = document.querySelector('.mobile-nav');
+            mobileNav.classList.toggle('show');
+        }
+
+
+
+        // ...................................................................................................................................... 
+
+        const windowWidth = window.innerWidth;
+        console.log("Largura da janela:", windowWidth, "pixels");
+
+        function openNotes() {
+    window.open('https://www.example.com/notes', '_blank');
+}
+
+    </script>
+</body>
+
+</html>
