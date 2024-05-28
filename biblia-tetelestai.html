@@ -5,16 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bíblia NVI</title>
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('pwabuilder-sw.js')
-        }
-    </script>
+    <link rel="manifest" href="/manifest.json">
     <!-- Adiciona a biblioteca Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="2.png" type="image/x-icon">
-    <link rel="manifest" href="manifest.json">
 
     <style>
         body {
@@ -2785,7 +2780,17 @@
     <div id="table-minor"></div>
 
     <script>
-
+if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/pwabuilder-sw.js')
+          .then(registration => {
+            console.log('Service Worker registrado com sucesso:', registration);
+          })
+          .catch(error => {
+            console.log('Falha ao registrar o Service Worker:', error);
+          });
+      });
+    }
         // ........................................................................................................................... 
         // Header 
 
