@@ -1,19 +1,19 @@
 {
   "name": "Bíblia Tetelestai",
   "short_name": "Bíblia",
-  "start_url": "/biblia-tetelestai.html",
+  "start_url": "/Biblia/biblia-tetelestai.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "description": "Aplicação PWA para leitura da Bíblia Tetelestai.",
   "icons": [
     {
-      "src": "/1.png",
+      "src": "/Biblia/1.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/2.png",
+      "src": "/Biblia/2.png",
       "sizes": "512x512",
       "type": "image/png"
     }
