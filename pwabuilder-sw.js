@@ -1,26 +1,26 @@
 const CACHE_NAME = 'biblia-tetelestai-cache-v1';
 const urlsToCache = [
-  '/',
-  '/biblia-tetelestai.html',
-  '/acf.html',
-  '/ara.html',
-  '/dicio.html',
-  '/english.html',
-  '/english2.html',
-  '/french.html',
-  '/spanish.html',
-  '/versododia.html',
-  '/anotacoes.html',
-  '/bible.html',
-  '/1.png',
-  '/2.png',
-  '/3.png',
-  '/4.png',
-  '/5.png',
-  '/6.png',
-  '/cor.png',
-  '/styles.css',  // Adicione aqui qualquer arquivo CSS usado pelo seu site
-  '/app.js'  // Adicione aqui qualquer arquivo JS usado pelo seu site
+  '/Biblia/',
+  '/Biblia/biblia-tetelestai.html',
+  '/Biblia/acf.html',
+  '/Biblia/ara.html',
+  '/Biblia/dicio.html',
+  '/Biblia/english.html',
+  '/Biblia/english2.html',
+  '/Biblia/french.html',
+  '/Biblia/spanish.html',
+  '/Biblia/versododia.html',
+  '/Biblia/anotacoes.html',
+  '/Biblia/bible.html',
+  '/Biblia/1.png',
+  '/Biblia/2.png',
+  '/Biblia/3.png',
+  '/Biblia/4.png',
+  '/Biblia/5.png',
+  '/Biblia/6.png',
+  '/Biblia/cor.png',
+  '/Biblia/styles.css',  // Adicione aqui qualquer arquivo CSS usado pelo seu site
+  '/Biblia/app.js'  // Adicione aqui qualquer arquivo JS usado pelo seu site
 ];
 
 // Instalando o Service Worker e cacheando recursos
