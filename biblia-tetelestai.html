@@ -3027,7 +3027,14 @@ if ('serviceWorker' in navigator) {
 
 
         document.addEventListener('DOMContentLoaded', function () {
-            fetch('https://www.abibliadigital.com.br/api/books')
+             const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHIiOiJUdWUgT2N0IDE1IDIwMjQgMjI6NDQ6MzcgR01UKzAwMDAuZWR1YXJkby5maWRlbGlzQG9iamV0aXZvaWJpdW5hLmNvbS5iciIsImlhdCI6MTcyOTAzMjI3N30.O3ZAJFrC8rVctokId9Ie4yv5HTYn-S4vUaUXobqrK4Q'; // Substitua pelo seu token JWT
+
+    fetch('https://www.abibliadigital.com.br/api/books', {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+        }
+    })
                 .then(response => response.json())
                 .then(data => {
                     // Cores fixas para cada grupo
